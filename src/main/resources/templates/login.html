@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <video autoplay loop class="back-video" muted playsinline>
+        <source src="video/bgvideo.mp4" type="video/mp4">
+    </video>
+    <nav>
+        <img src="img/logo.png" alt="..." class="logo">
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to <br> Furama Resort</h1>
+    </div>
+
+    <div class="wrap-login">
+        <h2 class="text-center text-white">LOGIN</h2>
+        <div class="form-login">
+            <form name='f' class="mb-3" th:action="@{/login}" method="post">
+                <label for="userName" class="text-white form-label">User Name</label>
+                <input type="text" style="margin-bottom: 2vh" name="username" class="form-control" id="userName">
+                <label for="pass" class="text-white form-label">Password</label>
+                <input type="password" style="margin-bottom: 2vh" name="password" class="form-control" id="pass">
+                <input type="checkbox" class="form-check-inline" id="checkBox" name="remember-me">
+                <label for="checkBox" class="form-label">Remember me ?</label>
+                <br>
+                <input type="submit" class="btn btn-primary" value="LOGIN">
+                <label><button type="button" class="btn btn-primary" style="margin-left: 5vh">SIGN IN</button></label>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="/js/jquery-3.6.0.min.js "></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

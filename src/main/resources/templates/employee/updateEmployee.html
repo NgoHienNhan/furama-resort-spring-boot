@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{/headerAndFooter::header}"></div>
+<div class="container-fluid" style="margin-top: 10%">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 text-center">
+            <h1 class="text-center text-warning">UPDATE EMPLOYEE</h1>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form th:action="@{/employee/update}" th:object="${employee}" method="post">
+                <input type="text" hidden="hidden" th:field="*{employeeId}">
+                <input type="text" hidden="hidden" th:field="*{user}">
+                <div class="form-group">
+                    <label for="inputName">Full name:</label>
+                    <input th:field="*{name}" type="text" class="form-control" id="inputName">
+                </div>
+                <div class="form-group">
+                    <label for="inputBirth">Date of birth:</label>
+                    <input th:field="*{birthday}" type="date" class="form-control" id="inputBirth">
+                </div>
+                <div class="form-group">
+                    <label for="inputIdCard">ID card:</label>
+                    <input th:field="*{idCard}" type="text" class="form-control" id="inputIdCard">
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone">Phone:</label>
+                    <input th:field="*{phone}" type="text" class="form-control" id="inputPhone">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input th:field="*{email}" type="email" class="form-control" id="exampleInputEmail1"
+                           aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputSalary">Salary:</label>
+                    <input th:field="*{salary}" type="text" class="form-control" id="inputSalary">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address:</label>
+                    <input th:field="*{address}" type="text" class="form-control" id="inputAddress">
+                </div>
+                <div class="form-group">
+                    <label for="position">Position :</label>
+                    <select th:field="*{position}" id="position" class="form-control w-25">
+                        <option th:each="p:${position}" th:text="${p.name}" th:value="${p.positionId}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="educationDegree">Education degree :</label>
+                    <select th:field="*{educationDegree}" id="educationDegree" class="form-control w-25">
+                        <option th:each="e:${education}" th:text="${e.educationDegreeName}"
+                                th:value="${e.educationDegreeId}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="division">Division :</label>
+                    <select th:field="*{division}" id="division" class="form-control w-25">
+                        <option th:each="d:${division}" th:text="${d.divisionName}"
+                                th:value="${d.divisionId}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<div th:insert="~{/headerAndFooter::footer}"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

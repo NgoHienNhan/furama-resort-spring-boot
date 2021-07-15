@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{/headerAndFooter::header}"></div>
+<div class="container-fluid" style="margin-top: 10%">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-warning text-center">EDIT CUSTOMER</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form th:action="@{/customer/edit}" th:object="${customer}" method="post">
+                <input type="text" hidden="hidden" th:field="*{customerId}">
+                <div class="form-group">
+                    <label for="inputNameCus">Full name:</label>
+                    <input th:field="*{customerName}" type="text" class="form-control" id="inputNameCus">
+                </div>
+                <div class="form-group">
+                    <label for="inputBirthCus">Date of birth:</label>
+                    <input th:field="*{customerBirthday}" type="date" class="form-control" id="inputBirthCus">
+                </div>
+                <div class="form-group">
+                    <label for="inputGenderCus">Gender:</label>
+                    <select th:field="*{customerGender}" id="inputGenderCus" class="form-control w-25">
+                        <option value="1">Male</option>
+                        <option value="2" >Female</option>
+                        <option value="0" >Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputIdCardCus">ID card:</label>
+                    <input th:field="*{customerIdCard}" type="text" class="form-control" id="inputIdCardCus">
+                </div>
+                <div class="form-group">
+                    <label for="inputPhoneCus">Phone:</label>
+                    <input th:field="*{customerPhone}" type="text" class="form-control" id="inputPhoneCus">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input th:field="*{customerEmail}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddressCus">Address:</label>
+                    <input th:field="*{customerAddress}" type="text" class="form-control" id="inputAddressCus">
+                </div>
+                <div class="form-group">
+                    <label for="inputTypeOfCus">Type of customer:</label>
+                    <select th:field="*{customerType}" id="inputTypeOfCus" class="form-control w-25">
+                        <option th:each="t:${typeCus}" th:text="${t.customerTypeName}" th:value="${t.customerTypeId}" ></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<div th:insert="~{/headerAndFooter::footer}"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

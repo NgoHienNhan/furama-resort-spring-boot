@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{/headerAndFooter::header}"></div>
+<div class="container-fluid" style="margin-top: 10%">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-warning text-center">SERVICE DETAIL</h1>
+        </div>
+    </div>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Name service:</dt>
+        <dd class="col-xl-4" th:text="${service.serviceName}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Area:</dt>
+        <dd class="col-xl-4" th:text="${service.serviceArea}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Max people:</dt>
+        <dd class="col-xl-4" th:text="${service.serviceMaxPeople}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Standard room:</dt>
+        <dd class="col-xl-4" th:text="${service.standardRoom}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Description other convenience:</dt>
+        <dd class="col-xl-4" th:text="${service.descriptionOtherConvenience}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Pool area:</dt>
+        <dd class="col-xl-4" th:text="${service.poolArea}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Number of floors:</dt>
+        <dd class="col-xl-4" th:text="${service.numberOfFloors}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Service type:</dt>
+        <dd class="col-xl-4" th:text="${service.serviceType.serviceTypeName}"></dd>
+    </dl>
+    <dl class="row">
+        <div class="col-xl-3"></div>
+        <dt class="col-xl-2">Service type:</dt>
+        <dd class="col-xl-4" th:text="${service.rentType.rentTypeName}"></dd>
+    </dl>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <a th:href="@{/service/update/__${service.serviceId}__}" class="btn btn-primary">UPDATE</a>
+            <span><button type="button" class="btn btn-warning float-right" data-toggle="modal"
+                          data-target="#exampleModal">
+                    Delete
+                </button>
+                </span>
+
+            <!-- Modal -->
+            <div class="modal fade" th:id="exampleModal" tabindex="-1"
+                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Confirm deleted</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h5 th:text="'Do you agree to delete '+${service.serviceName}+' service ?'"></h5>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                            </button>
+                            <a th:href="@{/service/delete/__${service.serviceId}__}"
+                               class="btn btn-warning">DELETE</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:insert="~{/headerAndFooter::footer}"></div>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
